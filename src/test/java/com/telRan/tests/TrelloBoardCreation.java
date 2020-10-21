@@ -2,14 +2,40 @@ package com.telRan.tests;
 
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class TrelloBoardCreation extends TestsBase {
     @Test
     public void boardCreationTest(){
+        int before = getBoardsCount();
         clickOnButtonPlus();
         selectCreateBoard();
         fillBoardForm("Second board", "public");
+        confirmBoardCreation();
+        returnOnHomePage();
+        int after = getBoardsCount();
+        System.out.println("was: " + before + " now: " + after);
+        Assert.assertEquals(after, before+1);
+    }
+
+    public int getBoardsCount() {
+        int res = wd.findElements(By.xpath("//*[@class='icon-lg icon-member']/../../..//li")).size()-1;
+        return res;
+
+    }
+
+    public void returnOnHomePage() {
+        new WebDriverWait(wd, 30).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".mod-list-add-button")));
+        click(By.xpath("//*[@data-test-id='header-home-button']"));
+
+    }
+
+    public void confirmBoardCreation() {
+        click(By.cssSelector("[data-test-id='create-board-submit-button']"));
+
     }
 
     public void fillBoardForm(String boardName, String teamVisible) {
@@ -23,12 +49,10 @@ public class TrelloBoardCreation extends TestsBase {
         click(By.cssSelector("button._1Lkx3EjS3wCrs7"));
         click(By.xpath("//*[@name='" + teamVisible + "']/../.."));
 
-        if(isElementPresent(By.cssSelector(".X6LMWvod566P68"))){
+        if(teamVisible.equals("public")){
             click(By.cssSelector(".X6LMWvod566P68 button"));
 
         }
-
-        click(By.cssSelector("[data-test-id='create-board-submit-button']"));
     }
 
     public void clickOnButtonPlus() {
