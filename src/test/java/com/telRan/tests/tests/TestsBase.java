@@ -1,5 +1,6 @@
-package com.telRan.tests;
+package com.telRan.tests.tests;
 
+import com.telRan.tests.fw.ApplicationManager;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -10,7 +11,7 @@ public class TestsBase {
     @BeforeClass
     public void setUp() throws InterruptedException {
         app.init();
-        app.login("dumbalien86@gmail.com", "TrelloLO2020");
+        app.session().login("dumbalien86@gmail.com", "TrelloLO2020");
 
     }
 
