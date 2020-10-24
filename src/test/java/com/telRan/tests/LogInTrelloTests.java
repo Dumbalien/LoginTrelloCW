@@ -4,28 +4,28 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class LogInTrelloTest extends TestsBase {
+public class LogInTrelloTests extends TestsBase {
 
     @BeforeMethod
     public void ensurePreconditions(){
-        if(isAvatarPresent()){
-            logout();
+        if(app.isAvatarPresent()){
+            app.logout();
         }
     }
 
     @Test
     public void loginAtlassianAccPositiveTest() throws InterruptedException {
-        login("dumbalien86@gmail.com", "TrelloLO2020");
+        app.login("dumbalien86@gmail.com", "TrelloLO2020");
 
-        Assert.assertTrue(isAvatarPresent());
+        Assert.assertTrue(app.isAvatarPresent());
     }
 
     @Test
     public void negativeLoginAtlassianAccPositiveTest() throws InterruptedException {
-        login("dumbalien86@gmail.com", "TrelloLO");
+        app.login("dumbalien86@gmail.com", "TrelloLO");
 
-        Assert.assertTrue(isLoginErrorPresent());
-        Assert.assertFalse(isAvatarPresent());
+        Assert.assertTrue(app.isLoginErrorPresent());
+        Assert.assertFalse(app.isAvatarPresent());
     }
 
 }
