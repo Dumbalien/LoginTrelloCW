@@ -16,7 +16,7 @@ public class TeamHelper extends HelperBase {
         type(By.cssSelector("[data-test-id='header-create-team-name-input']"), teamName);
         click(By.cssSelector("[data-test-id='header-create-team-type-input']"));
 
-        click(By.cssSelector("[data-test-id='header-create-team-type-input-" + type + "human resources']"));
+        click(By.cssSelector("[data-test-id='header-create-team-type-input-" + type + "']"));
     }
 
     public void submitTeamCreation() {
