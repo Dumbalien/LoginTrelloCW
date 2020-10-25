@@ -10,6 +10,7 @@ public class ApplicationManager {
     SessionHelper session;
     BoardHelper board;
     HeaderHelper header;
+    TeamHelper team;
 
     public void init() {
         wd = new ChromeDriver();
@@ -20,6 +21,7 @@ public class ApplicationManager {
         session = new SessionHelper(wd);
         board = new BoardHelper(wd);
         header = new HeaderHelper(wd);
+        team = new TeamHelper(wd);
 
     }
 
@@ -35,15 +37,11 @@ public class ApplicationManager {
         return board;
     }
 
+    public TeamHelper team() { return team; }
+
     public void stop() {
         wd.quit();
     }
-
-
-
-
-
-
 
 
 }

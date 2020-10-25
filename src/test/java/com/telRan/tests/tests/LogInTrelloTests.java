@@ -20,12 +20,12 @@ public class LogInTrelloTests extends TestsBase {
         Assert.assertTrue(app.header().isAvatarPresent());
     }
 
-    @Test
-    public void negativeLoginAtlassianAccPositiveTest() throws InterruptedException {
-        app.session().login("dumbalien86@gmail.com", "TrelloLO");
-
-        Assert.assertTrue(app.session().isLoginErrorPresent());
-        Assert.assertFalse(app.header().isAvatarPresent());
-    }
+//    @Test
+//    public void negativeLoginAtlassianAccPositiveTest() throws InterruptedException {
+//        app.session().login("dumbalien86@gmail.com", "TrelloLO");
+//
+//        Assert.assertTrue(app.session().isLoginErrorPresent());
+//        Assert.assertFalse(app.header().isAvatarPresent());
+ //   }
 
 }

@@ -12,21 +12,21 @@ public class TrelloBoardCreationTests extends TestsBase {
         app.header().selectCreateBoard();
         app.board().fillBoardForm("Second board", "public");
         app.board().confirmBoardCreation();
-        app.header().returnOnHomePage();
+        app.header().returnOnHomePageFromBoard();
         int after = app.board().getBoardsCount();
         System.out.println("was: " + before + " now: " + after);
         Assert.assertEquals(after, before+1);
         //
     }
 
-    @Test
-    public void boardCreationTest2(){
-        app.header().clickOnButtonPlus();
-        app.header().selectCreateBoard();
-        app.board().fillBoardForm("third board", "private");
-        app.board().confirmBoardCreation();
-        app.header().returnOnHomePage();
-    }
+//    @Test
+//    public void boardCreationTest2(){
+//        app.header().clickOnButtonPlus();
+//        app.header().selectCreateBoard();
+//        app.board().fillBoardForm("third board", "private");
+//        app.board().confirmBoardCreation();
+//        app.header().returnOnHomePage();
+//    }
 
 
 }
