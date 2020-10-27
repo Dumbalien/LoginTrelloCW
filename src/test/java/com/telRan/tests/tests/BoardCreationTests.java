@@ -1,16 +1,19 @@
 package com.telRan.tests.tests;
 
 
+import com.telRan.tests.model.Board;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TrelloBoardCreationTests extends TestsBase {
+public class BoardCreationTests extends TestsBase {
     @Test
     public void boardCreationTest(){
         int before = app.board().getBoardsCount();
         app.header().clickOnButtonPlus();
         app.header().selectCreateBoard();
-        app.board().fillBoardForm("Second board", "public");
+        app.board().fillBoardForm(new Board()
+                .withBoardName("Second board")
+                .withTeamVision("public"));
         app.board().confirmBoardCreation();
         app.header().returnOnHomePageFromBoard();
         int after = app.board().getBoardsCount();
