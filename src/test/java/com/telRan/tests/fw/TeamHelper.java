@@ -1,6 +1,7 @@
 package com.telRan.tests.fw;
 
 
+import com.telRan.tests.model.Team;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -11,12 +12,12 @@ public class TeamHelper extends HelperBase {
         super(wd);
     }
 
-    public void fillTeamCreationForm(String teamName, String type) {
+    public void fillTeamCreationForm(Team team) {
 
-        type(By.cssSelector("[data-test-id='header-create-team-name-input']"), teamName);
+        type(By.cssSelector("[data-test-id='header-create-team-name-input']"), team.getTeamName());
         click(By.cssSelector("[data-test-id='header-create-team-type-input']"));
 
-        click(By.cssSelector("[data-test-id='header-create-team-type-input-" + type + "']"));
+        click(By.cssSelector("[data-test-id='header-create-team-type-input-" + team.getType() + "']"));
     }
 
     public void submitTeamCreation() {
