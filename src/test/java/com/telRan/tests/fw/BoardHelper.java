@@ -49,8 +49,9 @@ public class BoardHelper extends HelperBase {
 
     public void renameBoard(Board board) {
         click(By.cssSelector(".js-rename-board"));
-        wd.findElement(By.cssSelector(".js-board-name-input")).clear();
-        wd.findElement(By.cssSelector(".js-board-name-input")).sendKeys(board.getBoardName() + TimeUnit.MILLISECONDS + Keys.ENTER);
+        //wd.findElement(By.cssSelector(".js-board-name-input")).clear();
+        wd.findElement(By.cssSelector(".js-board-name-input"))
+                .sendKeys(board.getBoardName() + System.currentTimeMillis() + Keys.ENTER);
 
     }
 }

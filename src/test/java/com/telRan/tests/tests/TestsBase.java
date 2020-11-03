@@ -1,21 +1,23 @@
 package com.telRan.tests.tests;
 
 import com.telRan.tests.fw.ApplicationManager;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.openqa.selenium.remote.BrowserType;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
 
 public class TestsBase {
 
-    protected final ApplicationManager app = new ApplicationManager();
+    protected static ApplicationManager app =
+            new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
 
-    @BeforeClass
+    @BeforeSuite
     public void setUp() throws InterruptedException {
         app.init();
         app.session().login("dumbalien86@gmail.com", "TrelloLO2020");
 
     }
 
-    @AfterClass(enabled = false)
+    @AfterSuite(enabled = false)
     public void tearDown() {
         app.stop();
 

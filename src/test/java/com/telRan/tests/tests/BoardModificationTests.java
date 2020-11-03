@@ -9,5 +9,7 @@ public class BoardModificationTests extends TestsBase {
         app.board().clickOnTheFirstBoard();
 
         app.board().renameBoard(new Board().withBoardName("renameBoard"));
+
+        app.header().returnOnHomePageFromBoard();
    }
 }
